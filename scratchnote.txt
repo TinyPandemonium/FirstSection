@@ -1,0 +1,3 @@
+// google api key
+
+key=AIzaSyDIRwAzaXppOVc4eAxBHRRyuEO4g7m0E2I
