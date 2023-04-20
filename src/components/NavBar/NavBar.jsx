@@ -5,9 +5,12 @@ import UserLogOut from '../LogoutForm/LogoutForm'
 export default function NavBar({user, setUser}) {
     return (
       <nav>
-        <span><Link to="/">Home</Link></span>
+        <span><Link to='/'>Home</Link></span>
         {user ? 
+        <>
+        <span><Link to='/search'>Search</Link></span>
         <UserLogOut user={user} setUser={setUser}/>
+        </>
         :
         <></>
         }

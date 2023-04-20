@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
-import './App.css'
+
 import AuthPage from '../AuthPage/AuthPage'
-import Search from '../../components/Search/Search';
+import Search from '../Search/Search';
 import NavBar from '../../components/NavBar/NavBar';
+import Favorites from '../Favorites/Favorites';
 
 function App() {
   const [user, setUser] = useState(true);
   const [searchInput, setSearchInput] = useState('');
   const [results, setResults] = useState([]);
-  const [addToRead, setAddToRead] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -23,18 +24,18 @@ function App() {
     setResults(data.items);
   }
 
-  const sendToRead = (result) => {
-    const oldresult = [...addToRead]
+  const addToFavorites = (result) => {
+    const oldresult = [...favorites]
     const newresult = [...oldresult, result]
-    setAddToRead(newresult)
+    setFavorites(newresult)
     console.log(newresult)
 
   }
 
-  const removeFromRead =(id) => {
-    const oldresult = [...addToRead]
+  const removeFromFavorites =(id) => {
+    const oldresult = [...favorites]
     const newresult = oldresult.filter(result => result.id !== id)
-    setAddToRead(newresult)
+    setFavorites(newresult)
     console.log(newresult)
   }
 
@@ -47,7 +48,8 @@ function App() {
    {user ? 
    <>
    <Routes>
-    <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToRead={addToRead}/>} />
+    <Route path='/search' element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToFavorites={addToFavorites}/>} />
+    <Route path='/favorites' element={<Favorites favorites={favorites} removeFromFavorites ={ removeFromFavorites} />} ></Route>
    </Routes>
    </> : <AuthPage setUser={setUser}/>
    } 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Search = ({addToRead, results, isLoading, handleSubmit, searchInput, setSearchInput}) => {
+const Search = ({addToFavorites, results, isLoading, handleSubmit, searchInput, setSearchInput}) => {
   
     return (
     <main className='Search'>
@@ -31,7 +31,7 @@ const Search = ({addToRead, results, isLoading, handleSubmit, searchInput, setSe
                       <div>
                         <a target='_blank' href={result.volumeInfo.previewLink}>see more</a>
                         <Link to="/">
-                          <button type = "button" onClick={() => addToRead(result)}>add to read</button>
+                          <button type = "button" onClick={() => addToFavorites(result)}>add to favorites</button>
                         </Link>
                       </div>
                     </div>
