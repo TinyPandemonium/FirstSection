@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 
 const Search = ({addToFavorites, results, isLoading, handleSubmit, searchInput, setSearchInput}) => {
   
-    return (
+
+
+  return (
     <main className='Search'>
         <h1></h1>
         <form onSubmit={handleSubmit}>
@@ -30,7 +32,7 @@ const Search = ({addToFavorites, results, isLoading, handleSubmit, searchInput, 
                       <p> { result.volumeInfo.authors}</p>
                       <div>
                         <a target='_blank' href={result.volumeInfo.previewLink}>see more</a>
-                        <Link to="/">
+                        <Link to="/favorites">
                           <button type = "button" onClick={() => addToFavorites(result)}>add to favorites</button>
                         </Link>
                       </div>
